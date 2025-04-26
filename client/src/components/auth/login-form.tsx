@@ -21,7 +21,7 @@ export function LoginForm() {
     },
     onSuccess: () => {
       console.log("login successful");
-      setLocation('/');
+      setLocation('/home');
     },
     onError: (error: Error) => {
       setError(error.message || 'Login failed. Please try again.');
