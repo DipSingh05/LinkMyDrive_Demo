@@ -20,7 +20,7 @@ export function LoginForm() {
         .then(res => res.json());
     },
     onSuccess: () => {
-      setLocation('/intro');
+      setLocation('/');
     },
     onError: (error: Error) => {
       setError(error.message || 'Login failed. Please try again.');
