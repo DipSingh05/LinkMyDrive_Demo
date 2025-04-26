@@ -20,6 +20,7 @@ export function LoginForm() {
         .then(res => res.json());
     },
     onSuccess: () => {
+      console.log("login successful");
       setLocation('/');
     },
     onError: (error: Error) => {
