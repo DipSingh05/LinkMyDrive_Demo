@@ -1,0 +1,73 @@
+Prompt:
+Build a basic Demo web app name "Linkmydrives" for a storage management platform that connects multiple Drive in one place like Google drive, OneDrive, DropBox, ICloud etc. even user can add another accounts drive, like a user has 2 google drives they can connect 2 accounts and they can preview the accounts activities . The app should allow users to log in to both services and manage their files in one unified dashboard.
+
+App must be responsive for all screens, better Ui and Ux, better animations, mordern theme.
+
+🧠 Core functionality:
+Authentication (just for demo purpose, give a default email and password to login and mention this in text below.)
+
+Login with Google Drive(demo)
+
+Login with Microsoft OneDrive(demo)
+
+Login with icloud(demo)
+
+Unified File Dashboard
+
+dark  theme to light theme toggle mode.
+
+user can connect or disconnect accounts of drive or the drives itself tollay. and it will show in is coonect or not in any place.
+
+Show files from both drives in a single table
+
+Show: file name, size, type, and last modified date
+
+Show which drive each file belongs to (e.g., Google / OneDrive/ ...)
+
+File Actions
+
+Search: Search across both drives
+
+Upload: Upload a file to selected drive (Google Drive or OneDrive or  ...)
+
+Download: Download any file
+
+Delete: Delete files from either drive
+
+Optional UI Features
+
+Display file icons (based on file type: doc, pdf, image, videos etc.)
+
+Allow sorting by name, date, size
+
+ a splash Screen.
+
+a Animated Introduction Screen where addressing the problems and solutions.
+
+A Animated Line Graph chart of uploads in Dashboard. Different lines will denote of diffrent Drives eg. Google drive, Onedrive, the x axis will be the upload sizes and y axis will be the upload time. In every upload there will be  a checkpount, a dot in the line graph . If i hover on the checkpoints it shows a tooltip where the data's like Upload detailos, file name, upload time, file type, upload location, file sizes ect. will be there.
+
+Add feature like I can click on the files to show/view them, the content of them in same tab. show some content, i need to see the content of the files.view model must cover the home page, and if i click outside of model then it will remove or if i click close icon it will remove,the viewmodel must include features button like download, trash, info, next button previous button( it shows dynamic like what i select that will show, like if i filter and select img then only images will show ), zoom in or out like those. 
+
+Add Pricing page.  create 3 tabs of monthly and yearly and pay as you go. Include free pricing at the top. then main focus on the 3 type of pricing in middle in a row- Basic, standard, premium, mention price and features. and add at the bottom for enterprise
+Add a About page - add about teams, add Topic what we are, what we solve, and the features of this app.
+
+Add a Download page where we mentaions the where our software can runs, suported platforms, the demo files, exe will be there for download, for andriod, ios, linux, windows, macos.
+
+Add a Engaging Reviews page where be a form which contain 3 review topic(It can add more so make it scroolable), every topic has there start rating system with a optional feedback.
+
+
+🛠️ Technical Notes:
+Use mock data or simulate API calls.
+
+add warning like - "this is a demo for getting feebcak and tractions. the real product may be different along with all ui/ux , pricing and features. ", "This is a demo version of the product intended for collecting feedback and measuring early traction.
+The final product may differ significantly in terms of UI/UX, features, and pricing.
+Everything presented here is subject to change based on user feedback and development progress.", ....
+
+Backend can be simple — just to handle file requests/actions.
+
+Design should be clean, responsive for all screens, animated UI, better UX and morden themes.
+
+Show loading indicators while fetching files.
+
+This is an MVP for demo/testing — polish and features can be light, but core actions should work.
+
