@@ -19,9 +19,10 @@ export function LoginForm() {
       return apiRequest('POST', '/api/auth/login', data)
         .then(res => res.json());
     },
-    onSuccess: () => {
-      console.log("login successful");
-      setLocation('/pricing');
+    onSuccess: (data) => {
+      console.log('Login success data:', data); // <-- optional, for debugging
+      localStorage.setItem('token', data.token); // <-- save token now
+      setLocation('/'); // redirect to dashboard
     },
     onError: (error: Error) => {
       setError(error.message || 'Login failed. Please try again.');

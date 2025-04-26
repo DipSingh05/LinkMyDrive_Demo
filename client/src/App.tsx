@@ -21,12 +21,17 @@ import NotFound from "@/pages/not-found";
 function Router() {
   return (
     <Switch>
+      {/* If authenticated, go to dashboard. Otherwise, go to login */}
       <Route path="/" component={Dashboard} />
       <Route path="/login" component={Login} />
+      
+      {/* Public pages */}
       <Route path="/pricing" component={Pricing} />
       <Route path="/about" component={About} />
       <Route path="/download" component={Download} />
       <Route path="/reviews" component={Reviews} />
+
+      {/* Catch-all for 404 */}
       <Route component={NotFound} />
     </Switch>
   );

@@ -4,6 +4,7 @@ import ExcelJS from "exceljs";
 import nodemailer from "nodemailer";
 import { z } from "zod";
 import dotenv from "dotenv";
+import jwt from 'jsonwebtoken';
 
 import {
   insertUserSchema,
@@ -48,22 +49,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/auth/login", async (req, res) => {
     try {
       const { email, password } = req.body;
-
+  
       if (!email || !password) {
-        return res
-          .status(400)
-          .json({ message: "Email and password are required" });
+        return res.status(400).json({ message: "Email and password are required" });
       }
-
+  
       const user = await storage.getUserByEmail(email);
-
+  
       if (!user || user.password !== password) {
         return res.status(401).json({ message: "Invalid credentials" });
       }
-
-      return res.json({
-        user: { id: user.id, username: user.username, email: user.email },
-      });
+  
+      const token = jwt.sign(
+        { id: user.id, email: user.email }, 
+        'your_secret_key', 
+        { expiresIn: '1h' }
+      );
+  
+      return res.json({ token }); // <-- THIS
     } catch (err) {
       return res.status(500).json({ message: "Internal server error" });
     }

@@ -4,10 +4,16 @@ import { useTheme } from '@/components/ui/theme-provider';
 import ThemeToggleButton from '../ui/themeToggleButton';
 
 export function Navbar() {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const { theme, setTheme } = useTheme();
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setLocation('/login'); // Redirect to login page
+  };
+  
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -106,7 +112,7 @@ export function Navbar() {
                 <div className="py-1">
                   <a href="#" className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800">Profile Settings</a>
                   <a href="#" className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800">Account Settings</a>
-                  <Link href="/login" className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800">Log Out</Link>
+                  <button onClick={handleLogout} className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800">Log Out</button>
                 </div>
               </div>
             )}

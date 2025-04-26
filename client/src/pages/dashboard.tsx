@@ -27,7 +27,8 @@ export default function Dashboard() {
 
   useEffect(() => {
     // Auth check
-    const isAuthenticated = sessionStorage.getItem("authenticated");
+    const token = localStorage.getItem('token');
+    const isAuthenticated = !!token;
 
     if (!isAuthenticated && process.env.NODE_ENV !== "development") {
       setLocation("/login");
