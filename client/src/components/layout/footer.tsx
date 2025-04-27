@@ -11,7 +11,7 @@ export function Footer() {
               <span className="font-bold text-lg">Linkmydrives</span>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-              Connect all your cloud storage services in one unified dashboard. Simplify file management across multiple platforms.
+            Connect all your cloud storage accounts into one unified drive. Simplify uploads, downloads, and file management across multiple platforms — effortlessly.
             </p>
             <div className="flex space-x-3">
               <a href="#" className="text-gray-500 hover:text-primary transition-colors">

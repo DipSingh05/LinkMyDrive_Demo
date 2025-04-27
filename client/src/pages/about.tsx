@@ -26,8 +26,7 @@ export default function About() {
       >
         <h1 className="text-4xl font-bold mb-4">About Linkmydrives</h1>
         <p className="text-xl text-gray-600 dark:text-gray-400">
-          We're on a mission to simplify cloud storage management and help you
-          take control of your digital life.
+        We’re on a mission to solve the storage limit problems by unify your cloud storage and give you true control over your digital world — simple, powerful, and frustration-free.
         </p>
       </motion.div>
 
@@ -43,21 +42,14 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <p className="text-gray-700 dark:text-gray-300 mb-4">
-                Linkmydrives is a unified cloud storage management platform that
-                connects all your cloud storage services in one place. We
-                believe that managing your files should be simple, no matter
-                where they're stored.
+              LinkMyDrives is a unified cloud storage platform that connects all your cloud accounts into a single, seamless drive. We believe managing your files should be effortless — no matter how many platforms you use.
               </p>
               <p className="text-gray-700 dark:text-gray-300 mb-4">
-                Founded in 2023, our team of cloud storage enthusiasts and
-                software engineers came together with a shared vision: to
-                eliminate the frustration of juggling multiple cloud storage
-                accounts and create a seamless experience for users.
+              Founded in 2025, our team of cloud storage enthusiasts and engineers shared a simple vision:
+              to eliminate the chaos of juggling multiple cloud drives and create a smarter, unified storage experience.
               </p>
               <p className="text-gray-700 dark:text-gray-300">
-                Our platform is designed to be intuitive, powerful, and secure,
-                giving you complete control over your digital assets while
-                maintaining the privacy and security you expect.
+              Our platform is built to be intuitive, powerful, and secure — giving you full control of your digital assets while ensuring the privacy and protection you expect from modern cloud technology.
               </p>
             </div>
             <div className="flex items-center justify-center">
@@ -211,10 +203,10 @@ export default function About() {
             This is a demo version intended for collecting feedback and
             measuring early traction.
           </p>
-          <p>
+          <p><b>
             No person is real in this images. Those are all AI generated
             images..
-          </p>
+          </b></p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {TEAM_MEMBERS.map((member, index) => (

@@ -299,25 +299,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // ------------------ Feedback System ------------------
-  //let preregistrationCount = 0;
-  let feedbackCount = 0;
-  let visitCount = 0;
-
-  const feedbacks: {
-    email?: string;
-    designation: string;
-    ratings: Record<string, number>;
-    suggestions?: string;
-  }[] = [];
-
-  const designationDistribution: Record<string, number> = {
-    student: 0,
-    teacher: 0,
-    parent: 0,
-    staff: 0,
-    other: 0,
-  };
-
+  
   app.post("/api/stats", async (_req, res) => {
     const filePath = path.join(__dirname, "../data/stats.json");
     const statsRaw = await fs.readFile(filePath, "utf-8");
@@ -350,31 +332,48 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/preregister", async (req, res) => {
     try {
       const { email, ...data } = req.body;
-
+  
       if (!email || typeof email !== "string") {
-        return res
-          .status(400)
-          .json({ message: "Valid recipient email is required." });
+        return res.status(400).json({ message: "Valid recipient email is required." });
       }
-
+  
       const workbook = new ExcelJS.Workbook();
       const sheet = workbook.addWorksheet("Preregistration");
-
+  
       const allKeys = new Set<string>();
       const rows = Array.isArray(data) ? data : [data];
-      rows.forEach((entry) =>
-        Object.keys(entry).forEach((key) => allKeys.add(key)),
-      );
-
+  
+      // Flatten feedback structure before collecting keys
+      const flattenedRows = rows.map((entry) => {
+        const { feedback, ...rest } = entry;
+        const flatFeedback = {};
+  
+        if (feedback && typeof feedback === "object") {
+          for (const [key, value] of Object.entries(feedback)) {
+            flatFeedback[`${key}_rating`] = value.rating ?? "";
+            flatFeedback[`${key}_feedback`] = value.feedback ?? "";
+          }
+        }
+  
+        return { ...rest, ...flatFeedback };
+      });
+  
+      // Update allKeys based on flattened structure
+      flattenedRows.forEach((entry) => {
+        Object.keys(entry).forEach((key) => allKeys.add(key));
+      });
+  
       sheet.columns = Array.from(allKeys).map((key) => ({
         header: key,
         key,
         width: 20,
       }));
-
-      rows.forEach((entry) => sheet.addRow(entry));
+  
+      // Add flattened rows
+      flattenedRows.forEach((entry) => sheet.addRow(entry));
+  
       const buffer = await workbook.xlsx.writeBuffer();
-
+  
       // Send email with attachment
       await transporter.sendMail({
         from: process.env.SMTP_USER,
@@ -385,32 +384,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
           {
             filename: "preregistration.xlsx",
             content: buffer,
-            contentType:
-              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
           },
         ],
       });
-
+  
       const filePath = path.join(__dirname, "../data/stats.json");
       const statsRaw = await fs.readFile(filePath, "utf-8");
       const stats = JSON.parse(statsRaw);
-
-      // Always increment registrations
+  
       stats.registrations++;
-
-      // Conditionally increment feedbacks if present
+  
       if (
         data.feedback ||
         Object.values(data).some((val) => val?.feedback || val?.rating)
       ) {
         stats.feedbacks++;
       }
-
+  
       stats.overallRating = data.overallRating ?? stats.overallRating;
-
       stats.lastUpdated = new Date().toISOString();
+  
       await fs.writeFile(filePath, JSON.stringify(stats, null, 2));
-
+  
       return res.json({
         success: true,
         registrations: stats.registrations,
@@ -425,7 +421,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
     }
   });
-
+  
   const httpServer = createServer(app);
   return httpServer;
 }

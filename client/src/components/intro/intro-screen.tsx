@@ -58,7 +58,7 @@ export default function IntroScreen({
     {
       title: "Welcome to Linkmydrives",
       description:
-        "The unified cloud storage management platform that connects to multiple cloud storage providers in one dashboard with modern UI/UX.",
+        "One Platform to connect, combine, and manage all your cloud drives with ease and a seamless modern UI/UX.",
       icon: <FiCloud className="w-10 h-10" />,
       visual: (
         <div className="flex items-center justify-center gap-4 ">
@@ -125,7 +125,7 @@ export default function IntroScreen({
     {
       title: "Our Solution",
       description:
-        "We solve the challenge of managing files across multiple cloud storage services by providing a single, intuitive interface for all your storage needs.",
+        "Managing files across different cloud accounts shouldn't feel like a full-time job. We bring all your storage spaces together into one unified drive, We go beyond just managing cloud drives.",
       icon: <FiFolder className="w-10 h-10" />,
       visual: (
         <div className="flex flex-col items-center ">
@@ -133,12 +133,12 @@ export default function IntroScreen({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="w-64 h-40 bg-gray-100 dark:bg-gray-800 rounded-lg mb-3 p-4 flex flex-col"
+            className="w-80 h-fit bg-gray-100 dark:bg-gray-800 rounded-lg mb-3 p-4 flex flex-col"
           >
             <div className="text-xs text-gray-500 mb-2">One Interface</div>
             <div className="flex-1 flex items-center justify-center text-center">
               <div className="text-sm">
-                No more switching between multiple apps
+                No more switching between multiple apps, we merge them so you can upload, access, downloads, and manage your files happens effortlessly without worrying about individual limits. <br />— without worrying where they’re stored.
               </div>
             </div>
           </motion.div>
@@ -159,15 +159,15 @@ export default function IntroScreen({
     {
       title: "Key Benefits",
       description:
-        "Everything you need to manage your cloud storage in one place.",
+        "Manage, upload, and download across all your cloud storages — as if they were one giant drive. No switching apps. No searching folders. Just pure simplicity.",
       icon: <FiShield className="w-10 h-10" />,
       visual: (
         <div className="grid grid-cols-2 gap-4 w-full max-w-sm mx-auto">
           {[
-            { icon: <FiSearch />, text: "Search across drives" },
-            { icon: <FiRefreshCw />, text: "Transfer between services" },
+            { icon: <FiSearch />, text: "Search and transfer across drives" },
+            { icon: <FiRefreshCw />, text: "Smart uploads" },
             { icon: <FiEye />, text: "Enhanced file preview" },
-            { icon: <FiUploadCloud />, text: "Unified uploads" },
+            { icon: <FiUploadCloud />, text: "Unified Storage" },
             { icon: <FaLaptopFile />, text: "Advance File Management" },
             { icon: <LuBrainCircuit />, text: "A.I Assistant" },
           ].map((item, i) => (
