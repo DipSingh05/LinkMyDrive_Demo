@@ -131,6 +131,7 @@ const StatsSection = ({ rating }: { rating?: number }) => {
         ...prev,
         overallRating: rating,
       }));
+      fetchStats();
     }
   }, [rating]);
 

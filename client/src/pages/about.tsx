@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { TEAM_MEMBERS } from "@/lib/constants";
 
+
 export default function About() {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -203,13 +204,19 @@ export default function About() {
             This is a demo version intended for collecting feedback and
             measuring early traction.
           </p>
-          <p><b>
-            No person is real in this images. Those are all AI generated
-            images..
-          </b></p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {TEAM_MEMBERS.map((member, index) => (
+        
+        <motion.section
+        className="mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <div className="bg-white dark:bg-dark-surface rounded-xl shadow-lg p-8">
+          <div className="grid md:grid-cols-2 gap-8">
+          <div className="flex items-center justify-center">
+              <div className="relative w-full max-w-md aspect-video">
+              {TEAM_MEMBERS.map((member, index) => (
             <motion.div
               key={index}
               className="bg-white dark:bg-dark-surface rounded-lg shadow-md overflow-hidden"
@@ -226,29 +233,74 @@ export default function About() {
                   {member.role}
                 </p>
                 <div className="mt-3 flex justify-center space-x-3">
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-                  >
-                    <i className="ri-linkedin-fill"></i>
-                  </a>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-                  >
-                    <i className="ri-twitter-fill"></i>
-                  </a>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-                  >
-                    <i className="ri-mail-line"></i>
-                  </a>
+                <a
+                  href="https://www.linkedin.com/in/diptomansingh/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                >
+                  <i className="ri-linkedin-fill"></i>
+                </a>
+
+                <a
+                  href="https://diptomansingh.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                >
+                  <i className="ri-global-line"></i> 
+                </a>
+
+                <a
+                  href="https://wa.me/message/ZNXIHBHEUAU2N1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                >
+                  <i className="ri-whatsapp-fill"></i> 
+                </a>
+
+                <a
+                  href="https://github.com/DipSingh05/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                >
+                  <i className="ri-github-fill"></i>
+                </a>
+
+                <a
+                  href="mailto:diptomansingh.personal@gmail.com"
+                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                >
+                  <i className="ri-mail-line"></i>
+                </a>
+
                 </div>
               </div>
             </motion.div>
           ))}
+              </div>
+            </div>
+
+            <div>
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
+              I'm Diptoman Singh, a 23-year-old developer and the Founder of LinkMyDrives. I completed my Master of Computer Applications (M.C.A) from Asansol Engineering College, where I built a strong foundation in development & technologies.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
+              Growing up in Raniganj, West Bengal, I was always passionate about solving real-world problems with technology. After completing my B.Sc. (Honors) in Geology and shifting into the tech world, I dedicated myself to building solutions that make everyday digital life simpler and smarter.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
+              Founded in 2025, LinkMyDrives was born from my vision to replace outdated, scattered cloud systems with one smart, limitless storage solution. By combining my technical skills with a user-first approach, I aim to create a modern platform that empowers users and solves real storage challenges.
+            </p>
+            <p className="text-gray-700 dark:text-gray-300">
+              Our platform is designed to be intuitive, powerful, and secure — giving you full control over your digital assets while ensuring the privacy and protection you expect. LinkMyDrives marks the beginning of my entrepreneurial journey, and every piece of feedback from users like you helps us grow stronger.
+            </p>
+
+            </div>
+          </div>
         </div>
+      </motion.section>
       </motion.section>
 
       {/* Call to Action */}

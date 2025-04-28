@@ -62,11 +62,15 @@ export default function PreregisterForm() {
     {
       id: "understandGoal",
       title: "Do you get our goal?",
+      description:
+        "LinkMyDrives is a unified cloud storage platform that connects all your cloud accounts into a single, seamless drive.",
       fields: ["rating", "feedback"],
     },
     {
       id: "canSolve",
       title: "Do you think it can solve your problems?",
+      description:
+        "Instead of managing multiple drives and folders separately, our platform becomes your new digital storage home — simplifying uploads, downloads, and file organization effortlessly.",
       fields: ["rating", "feedback"],
     },
     {
@@ -231,8 +235,6 @@ export default function PreregisterForm() {
         throw new Error(data.error || "Failed to submit preregistration");
       }
 
-      await fetchStats();
-
     } catch (error) {
       console.error("Error submitting form:", error);
       setError((prev) => ({
@@ -283,7 +285,6 @@ export default function PreregisterForm() {
       if (!response.ok) {
         throw new Error(data.error || "Failed to submit feedback");
       }
-      await fetchStats();
 
     } catch (error) {
       console.error("Error submitting feedback:", error);

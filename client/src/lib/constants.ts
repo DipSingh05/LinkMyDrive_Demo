@@ -9,6 +9,8 @@ import type {
   GraphPoint
 } from "./types";
 
+import mypic from "../../../attached_assets/mypic.jpg";
+
 export const DEFAULT_EMAIL = "demo@linkmydrives.com";
 export const DEFAULT_PASSWORD = "demo123";
 
@@ -127,35 +129,11 @@ export const PRICING_PLANS: PricingPlan[] = [
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: 'Sarah Johnson',
-    role: 'CEO & Founder',
-    avatar: 'https://randomuser.me/api/portraits/women/1.jpg'
+    name: 'Diptoman Singh',
+    role: 'Founder & Developer',
+    avatar: mypic
   },
-  {
-    name: 'Michael Chen',
-    role: 'CTO',
-    avatar: 'https://randomuser.me/api/portraits/men/2.jpg'
-  },
-  {
-    name: 'Jessica Williams',
-    role: 'Head of Product',
-    avatar: 'https://randomuser.me/api/portraits/women/3.jpg'
-  },
-  {
-    name: 'David Rodriguez',
-    role: 'Lead Developer',
-    avatar: 'https://randomuser.me/api/portraits/men/4.jpg'
-  },
-  {
-    name: 'Emily Thompson',
-    role: 'UX Designer',
-    avatar: 'https://randomuser.me/api/portraits/women/5.jpg'
-  },
-  {
-    name: 'Robert Jackson',
-    role: 'Marketing Director',
-    avatar: 'https://randomuser.me/api/portraits/men/6.jpg'
-  }
+  
 ];
 
 export const DOWNLOAD_OPTIONS: DownloadOption[] = [
