@@ -48,14 +48,14 @@ transporter.verify(function (error, success) {
   }
 });
 
-// Google Sheets API setup
-const credentialsPath = path.join(__dirname, '../config/credentials.json');
+// Google Sheets API setup using environment variables for Google Cloud credentials
+const credentials = JSON.parse(process.env.GOOGLE_CLOUD_SERVICE_ACCOUNT || '{}');
 const auth = new google.auth.GoogleAuth({
-  keyFile: credentialsPath,
+  credentials,
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 const sheets = google.sheets({ version: 'v4', auth });
-const spreadsheetId = '1UFy8-NLds7LlzfKdEtxyFDrGv5qKH2tXaSzhfa4bV3k'; // Example spreadsheet ID
+const spreadsheetId = process.env.SPREADSHEET_ID || ''; // Spreadsheet ID from environment
 
 // Route handler for registering routes
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -77,7 +77,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const token = jwt.sign(
         { id: user.id, email: user.email },
-        'your_secret_key',
+        process.env.JWT_SECRET || 'your_secret_key',
         { expiresIn: '1h' }
       );
 
