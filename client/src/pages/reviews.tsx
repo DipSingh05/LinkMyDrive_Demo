@@ -1097,7 +1097,7 @@ export default function PreregisterForm() {
             ) : (
               <form onSubmit={handleFormSubmit} className="space-y-4">
                 <h3 className="text-xl font-bold mb-4">
-                  Preregister for Early Access
+                  Preregister & Feedbacks
                 </h3>
 
                 <div>

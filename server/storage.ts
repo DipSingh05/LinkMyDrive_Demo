@@ -108,6 +108,27 @@ export class MemStorage implements IStorage {
       usedSpace: 4301, // 4.2 GB in MB
       isConnected: true
     });
+
+    // Create demo drives
+    this.createDrive({
+      userId: 1,
+      name: "Google Drive",
+      type: "google",
+      email: "demo2@gmail.com",
+      totalSpace: 15360, // 15 GB in MB
+      usedSpace: 7372, // 7.2 GB in MB
+      isConnected: true
+    });
+
+    this.createDrive({
+      userId: 1,
+      name: "Dropbox",
+      type: "dropbox",
+      email: "demo2@email.com",
+      totalSpace: 2048, // 2 GB in MB
+      usedSpace: 1536, // 1.5 GB in MB
+      isConnected: true
+    });
     
     const Id = this.fileId++;
 

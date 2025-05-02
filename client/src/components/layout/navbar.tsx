@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { useTheme } from '@/components/ui/theme-provider';
 import ThemeToggleButton from '../ui/themeToggleButton';
+import { Badge } from '../ui/badge';
 
 export function Navbar() {
   const [location, setLocation] = useLocation();
@@ -48,6 +49,7 @@ export function Navbar() {
           <Link href="/" onClick={closeMenus} className="flex items-center">
             <i className="ri-cloud-line text-primary text-2xl mr-2"></i>
             <span className="font-bold text-xl">Linkmydrives</span>
+            <Badge className="ms-2" variant="default">Demo</Badge>
           </Link>
           
           <nav className="hidden md:flex space-x-6">

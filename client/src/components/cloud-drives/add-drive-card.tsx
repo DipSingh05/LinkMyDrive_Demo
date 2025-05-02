@@ -50,32 +50,11 @@ export function AddDriveCard() {
     try {
       setIsSubmitting(true);
 
-      const totalSpaceMap = {
-        google: 15360,
-        onedrive: 5120,
-        dropbox: 2048,
-        icloud: 5120,
-      };
-
-      const driveData = {
-        userId: 1, // Example static user ID
-        name:
-          driveType === 'google'
-            ? 'Google Drive'
-            : driveType === 'onedrive'
-            ? 'OneDrive'
-            : driveType === 'dropbox'
-            ? 'Dropbox'
-            : 'iCloud',
-        type: driveType,
-        email,
-        totalSpace: totalSpaceMap[driveType as keyof typeof totalSpaceMap] || 5120,
-        usedSpace: 0,
-        isConnected: true,
-      };
-
-      await apiRequest('POST', '/api/drives', driveData);
-      queryClient.invalidateQueries({ queryKey: ['/api/drives'] });
+      toast({
+        title: 'Success',
+        description: "Connecting the drive successfully.\n note:-This is demo feature for demo purpose.",
+        variant: 'default',
+      });
 
       setDriveType('');
       setEmail('');

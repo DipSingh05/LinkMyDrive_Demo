@@ -76,7 +76,9 @@ export default function DriveDashboard() {
             <Button
               className="animatedCard"
               variant="outline"
-              onClick={() => setDialogOpen(false)}
+              onClick={() => {setDialogOpen(false)
+                
+              }}
             >
               Cancel
             </Button>
@@ -88,6 +90,11 @@ export default function DriveDashboard() {
                   await apiRequest("DELETE", "/api/drives");
                   await queryClient.invalidateQueries({
                     queryKey: ["/api/drives"],
+                  });
+                  toast({
+                    title: 'Success',
+                    description: "Deleting all drives successfully.\n note:-This is demo feature for demo purpose.",
+                    variant: 'destructive',
                   });
                   setDialogOpen(false);
                 } catch (error) {
