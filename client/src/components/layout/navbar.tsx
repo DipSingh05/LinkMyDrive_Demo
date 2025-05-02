@@ -79,7 +79,7 @@ export function Navbar() {
               href="/reviews" 
               onClick={closeMenus}
               className={`py-5 border-b-2 ${isActive('/reviews') ? 'border-primary text-primary font-medium' : 'border-transparent hover:text-primary'} transition-colors`}>
-              Reviews
+              Pre-Register
             </Link>
           </nav>
         </div>

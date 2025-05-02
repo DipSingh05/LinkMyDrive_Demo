@@ -32,7 +32,7 @@ export default function DriveDashboard() {
   return (
     <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start w-full h-full">
       {/* Left section with scrollable cards */}
-      <div className="w-full p-2 pr-4 h-[23rem] overflow-y-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="w-full p-2 pr-4 h-fit max-h-[23rem] overflow-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {isLoading ? (
           <p>Loading drives...</p>
         ) : (
