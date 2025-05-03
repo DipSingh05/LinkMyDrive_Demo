@@ -30,6 +30,9 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/download" component={Download} />
       <Route path="/reviews" component={Reviews} />
+      <Route path="/feedback" component={Reviews} />
+      <Route path="/demo" component={Reviews} />
+      
 
       {/* Catch-all for 404 */}
       <Route component={NotFound} />
