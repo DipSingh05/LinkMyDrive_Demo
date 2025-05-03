@@ -1193,6 +1193,7 @@ export default function PreregisterForm() {
               </form>
             )}
           </motion.div>
+          <p className="mt-6 text-center text-lg text-gray-600 dark:text-gray-400"> For Demo, visit Dashboard Section.</p>
         </div>
       </motion.section>
 
