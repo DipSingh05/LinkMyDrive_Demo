@@ -8,6 +8,8 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogPortal,
+  DialogOverlay
 } from "@/components/ui/dialog";
 import {
   Select,
@@ -17,6 +19,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import StatsSection, { fetchStats } from "@/components/review/StatsSection";
+import {
+  Share2, Link as LinkIcon, Twitter, Facebook, Linkedin
+} from "lucide-react";
+import { FaRedditAlien, FaWhatsapp } from "react-icons/fa";
 
 export default function PreregisterForm() {
   // State for preregistration form
@@ -34,6 +40,48 @@ export default function PreregisterForm() {
     designation: "",
     country: "",
   });
+
+  const shareButtons = [
+    {
+      label: "Copy Link",
+      icon: <LinkIcon size={18} />,
+      onClick: () => {
+        navigator.clipboard.writeText("https://linkmydrives.onrender.com/feedback");
+        alert("Link copied to clipboard!");
+      },
+      className: "bg-gray-700 hover:bg-gray-800",
+    },
+    {
+      label: "WhatsApp",
+      icon: <FaWhatsapp size={18} />,
+      href: `https://wa.me/?text=Check%20out%20LinkMyDrives%20-%20https://linkmydrives.onrender.com/feedback`,
+      className: "bg-green-500 hover:bg-green-600",
+    },
+    {
+      label: "X",
+      icon: <Twitter size={18} />,
+      href: `https://twitter.com/intent/tweet?text=Check%20out%20LinkMyDrives!%20Unify%20your%20storage%20easily%20-%20https://linkmydrives.onrender.com/feedback`,
+      className: "bg-black hover:bg-gray-900",
+    },
+    {
+      label: "LinkedIn",
+      icon: <Linkedin size={18} />,
+      href: `https://www.linkedin.com/sharing/share-offsite/?url=https://linkmydrives.onrender.com/feedback`,
+      className: "bg-blue-700 hover:bg-blue-800",
+    },
+    {
+      label: "Facebook",
+      icon: <Facebook size={18} />,
+      href: `https://www.facebook.com/sharer/sharer.php?u=https://linkmydrives.onrender.com/feedback`,
+      className: "bg-blue-600 hover:bg-blue-700",
+    },
+    {
+      label: "Reddit",
+      icon: <FaRedditAlien size={18} />,
+      href: `https://www.reddit.com/submit?url=https://linkmydrives.onrender.com/feedback&title=Try%20LinkMyDrives%20-%20Your%20Unified%20Storage%20Platform`,
+      className: "bg-orange-600 hover:bg-orange-700",
+    },
+  ];
 
   // State for feedback form
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
@@ -262,6 +310,7 @@ export default function PreregisterForm() {
     try {
       setIsSubscribed(true);
       localStorage.setItem("subscribe", 'true');
+      setFormSubmitted(true);
 
       const rating = await handleOverallRatingChange();
       // Submit preregistration data to API
@@ -644,6 +693,62 @@ export default function PreregisterForm() {
                   Thanks for your interest in Linkmydrives. We'll notify you
                   when we launch.
                 </motion.p>
+
+                <motion.div
+  className="flex flex-col items-center gap-4 mt-8"
+  initial={{ y: 40, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ delay: 0.6, duration: 0.5, ease: "easeOut" }}
+>
+  <motion.p
+    className="text-gray-700 dark:text-gray-300 font-semibold flex items-center gap-2 text-lg"
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ delay: 0.8, duration: 0.4 }}
+  >
+    <Share2 size={20} /> Share with your friends
+  </motion.p>
+
+  <motion.div
+    className="flex flex-wrap justify-center gap-3 mt-2"
+    initial="hidden"
+    animate="visible"
+    variants={{
+      visible: {
+        transition: { staggerChildren: 0.08, delayChildren: 0.5 },
+      },
+    }}
+  >
+    {shareButtons.map((button, idx) => (
+      <motion.div
+        key={idx}
+        variants={{
+          hidden: { opacity: 0, scale: 0.8, y: 10 },
+          visible: { opacity: 1, scale: 1, y: 0 },
+        }}
+      >
+        {button.href ? (
+          <a
+            href={button.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${button.className} text-white flex items-center gap-2 px-4 py-2 rounded-full text-sm shadow-md transition-transform transform hover:scale-105`}
+          >
+            {button.icon} {button.label}
+          </a>
+        ) : (
+          <button
+            onClick={button.onClick}
+            className={`${button.className} text-white flex items-center gap-2 px-4 py-2 rounded-full text-sm shadow-md transition-transform transform hover:scale-105`}
+          >
+            {button.icon} {button.label}
+          </button>
+        )}
+      </motion.div>
+    ))}
+  </motion.div>
+</motion.div>
+
                 
                 <motion.div
                   initial={{ scale: 0 }}
@@ -889,8 +994,17 @@ export default function PreregisterForm() {
       </motion.section>
 
       {/* Feedback Form Dialog */}
-      <Dialog open={showFeedbackForm} onOpenChange={setShowFeedbackForm}>
-        <DialogContent className="max-w-2xl">
+      <Dialog modal={true} open={showFeedbackForm} onOpenChange={(open)=>{
+        if (!open && !formSubmitted){
+          handleCloseFeedbackSubmit();
+        }
+        setShowFeedbackForm(open);
+      }}>
+        <DialogPortal>
+      <DialogOverlay onPointerDown={(e) => e.stopPropagation()} // Prevent overlay click from closing
+      className="fixed inset-0 bg-white/50"
+    />
+        <DialogContent className="max-w-2xl" onInteractOutside={(e) => e.preventDefault()}>
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-center">
               {formSubmitted
@@ -1128,6 +1242,7 @@ export default function PreregisterForm() {
             )}
           </div>
         </DialogContent>
+        </DialogPortal>
       </Dialog>
     </>
   );
