@@ -183,7 +183,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Append to Google Sheets
       await sheets.spreadsheets.values.append({
         spreadsheetId,
-        range: 'Sheet1',
+        range: 'Web Leads',
         valueInputOption: 'USER_ENTERED',
         insertDataOption: 'INSERT_ROWS',
         resource: { values: sheetRows },

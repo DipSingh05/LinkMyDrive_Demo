@@ -17,6 +17,7 @@ import About from "@/pages/about";
 import Download from "@/pages/download";
 import Reviews from "@/pages/reviews";
 import NotFound from "@/pages/not-found";
+import Policy from "@/pages/policy"
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function Router() {
       {/* Public pages */}
       <Route path="/pricing" component={Pricing} />
       <Route path="/about" component={About} />
+      <Route path="/policy" component={Policy} />
       <Route path="/download" component={Download} />
       <Route path="/reviews" component={Reviews} />
       <Route path="/feedback" component={Reviews} />

@@ -71,12 +71,12 @@ export function Navbar() {
               className={`py-5 border-b-2 ${isActive('/download') ? 'border-primary text-primary font-medium' : 'border-transparent hover:text-primary'} transition-colors`}>
               Download
             </Link>
-            <Link 
+            {/* <Link 
               href="/about" 
               onClick={closeMenus}
               className={`py-5 border-b-2 ${isActive('/about') ? 'border-primary text-primary font-medium' : 'border-transparent hover:text-primary'} transition-colors`}>
               About
-            </Link>
+            </Link> */}
             <Link 
               href="/reviews" 
               onClick={closeMenus}

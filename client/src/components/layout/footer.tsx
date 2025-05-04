@@ -32,9 +32,9 @@ export function Footer() {
           <div>
             <h3 className="font-medium mb-4">Product</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Dashboard</Link></li>
-              <li><Link href="/pricing" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Pricing</Link></li>
-              <li><Link href="/download" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Download</Link></li>
+              <li><Link href="/" className="text-green-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Dashboard</Link></li>
+              <li><Link href="/pricing" className="text-green-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Pricing</Link></li>
+              <li><Link href="/download" className="text-green-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Download</Link></li>
               <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Security</a></li>
               <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Enterprise</a></li>
             </ul>
@@ -43,10 +43,10 @@ export function Footer() {
           <div>
             <h3 className="font-medium mb-4">Company</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">About</Link></li>
+              <li><Link href="/about" className="text-green-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">About</Link></li>
               <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Careers</a></li>
               <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Blog</a></li>
-              <li><Link href="/reviews" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Feedbacks</Link></li>
+              <li><Link href="/reviews" className="text-green-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Feedbacks</Link></li>
               <li><a href="#" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Contact</a></li>
             </ul>
           </div>
@@ -69,7 +69,7 @@ export function Footer() {
           </p>
           <div className="flex space-x-6 text-sm">
             <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Terms of Service</a>
-            <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="/policy" className="text-green-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Privacy Policy</a>
             <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Cookies</a>
           </div>
         </div>
